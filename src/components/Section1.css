@@ -1,0 +1,33 @@
+
+.box {
+    border-radius: 10px;
+    padding: 12px 16px;
+    box-shadow: 0 6px 12px -4px rgb(11 18 25 / 10%);
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+}
+
+.box-img {
+    width: 56px;
+    height: 62px;
+}
+
+.box-text {
+}
+
+.box-desc {
+    color: black;
+    font-weight: bold;
+    padding: 0;
+}
+
+.offr-text {
+    color: #5ba41c;
+    font-weight: bold;
+}
+
+.arrow {
+    float: right;
+    font-size: 0.6rem;
+}

@@ -1,0 +1,286 @@
+.product-box {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.product-title {
+    font-size: 20px;
+    color: #151b39;
+    font-weight: 400;
+    letter-spacing: .25px;
+}
+
+.product-category {
+    background: #f6f6f7;
+    height: 20px;
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #6f7284;
+    max-width: 78%;
+    width: auto;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+.like {
+    color: #c7c8d0;
+}
+
+.rating {
+    font-size: 16px;
+    color: #73c330;
+}
+
+.fa-heart {
+    cursor: pointer;
+}
+
+.product-pricing {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.best-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #6f7284;
+}
+
+.final-price {
+    color: #ef4281;
+    font-size: 20px;
+}
+
+.product-det {
+    color: #6f7284;
+    font-size: 12px;
+    letter-spacing: .25px;
+}
+
+.product-det p {
+    margin-bottom: 0.25rem;
+}
+
+.mkt {
+    font-style: italic;
+}
+
+.mrp-off {
+    font-size: 12px;
+}
+
+.mrp {
+    text-decoration: line-through;
+}
+
+.off {
+    color: #378f30;
+}
+
+.cart-add-btn,
+.cart-add-btn:hover,
+.cart-add-btn:focus,
+.cart-add-btn:active {
+    background: #24aeb1;
+    border-radius: 4px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: none !important;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 33px;
+    padding: 6px 15px 6px 15px;
+    vertical-align: middle;
+    width: 124px;
+}
+
+.offers {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: .25px;
+    color: #6f7284;
+}
+
+.discount {
+    font-size: 14px;
+    color: #151b39;
+}
+
+.applicable_off {
+    margin: 0 0 16px;
+    vertical-align: middle;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+}
+
+.off_applied {
+    float: right;
+    color: #ef4281;
+    font-size: 12px;
+}
+
+.off_save {
+    color: #378f30;
+    font-size: 12px;
+    font-weight: Bold;
+}
+
+.review-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px 24px 22px;
+}
+
+.rating-N-rvw {
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 1px;
+    color: #6f7284;
+}
+
+.rate-rvw {
+    border-right: 1px solid rgba(21, 27, 57, .1);
+}
+
+.rating-rvw {
+    color: #73c330;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.rating-bar-rate {
+    color: #6f7284;
+}
+
+.rating-star {
+    color: #73c330;
+}
+
+.rating-bar {
+    margin-top: -29px;
+    width: 70%;
+}
+
+.progress {
+    height: 5px;
+    background-color: #151b393d;
+}
+
+.progress-bar {
+    background-color: #73c330;
+}
+
+.rating-percent {
+    margin-top: -40px;
+    margin-left: 85%;
+    color: #737688;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.review-form-block {
+    margin: 5rem auto;
+    width: 100%;
+}
+
+.rate-product {
+    font-size: small;
+    font-weight: bold;
+}
+
+.rate-product-star {
+    color: #c7c8d0;
+    font-size: 24px;
+}
+
+.write-review,
+.write-review:hover,
+.write-review:focus,
+.write-review:active {
+    background-color: rgba(21,27,57,.06);
+    height: 50px;
+    width: 100%;
+    border-radius: 4px;
+    border: 0;
+    letter-spacing: 1px;
+    color: #737688;
+    cursor: pointer;
+    box-shadow: none !important;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px 15px 1px 15px;
+    vertical-align: middle;
+}
+
+.disclaimer-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px 24px;
+}
+
+.disclaimer {
+    font-size: 16px;
+    color: #6f7284;
+}
+
+.disclaimer-text {
+    font-size: 14px;
+}
+
+.bottom-product-box {
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 3px 0 #24aeb1;
+}
+
+.l-product-title {
+    font-size: 18px;
+    color: #151b39;
+    letter-spacing: .25px;
+}
+
+.l-mkt {
+    color: #6f7284;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.l-price {
+    float: right;
+}
+
+.l-bestprice {
+    float: right;
+    color: #ef4281;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.l-mrp-off {
+    margin-top: 30px;
+}
+
+.l-off {
+    color: #378f30;
+    font-size: 11px;
+}
+
+.l-mrp {
+    letter-spacing: .25px;
+    font-size: 13px;
+}
+
+.l-strike {
+    text-decoration: line-through;
+}
+
+.l-img {
+    width: 50px !important;
+    height: 50px !important;
+}

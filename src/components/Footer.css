@@ -1,0 +1,94 @@
+
+.footer {
+    background-color: white;
+}
+
+.footer-img {
+    width: 180px;
+    height: 39px;
+}
+
+.footer-text {
+    color: rgba(11,18,25,.5);
+    font-weight: 600;
+}
+
+.footer-middle {
+    border-bottom: 1px solid rgba(11,18,25,.1);
+    border-top: 1px solid rgba(11,18,25,.1);
+}
+
+.footer-head {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: normal;
+    color: #0b1219;
+}
+
+.footer-list,
+.footer-list a,
+.footer-list a:active {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 32px;
+    font-size: 14px;
+    color: #0b1219;
+}
+
+.footer-list a,
+.footer-list a:active {
+    color: #0b1219;
+}
+
+.footer-desc {
+    font-size: 14px;
+}
+
+.footer-newsletter {
+    width: 250px;
+}
+
+.footer-form {
+    border-bottom: 1px solid rgba(11,18,25,.2);
+    width: 250px;
+}
+
+.form-control {
+    border: none;
+    border-radius: 0;
+    width: 207px;
+    height: 40px;
+    font-size: 14px;
+    padding: 0 12px;
+}
+
+.form-control:focus {
+    border: none;
+}
+
+.go-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: url(./images/svgs/send-icon.svg) no-repeat center/18px!important;
+    border: 0;
+    padding: 0;
+    font-size: 0;
+}
+
+.app-download {
+    height: 34px;
+    width: 116px;
+}
+
+.footer-bottom,
+.footer-bottom a,
+.footer-bottom a:active {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 550;
+    color: rgba(11,18,25,.5);
+}

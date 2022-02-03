@@ -1,0 +1,100 @@
+
+.nav-container {
+    padding: 0.5% 8%;
+}
+
+.nav-bar {
+    background-color: #32aeb1;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.navbar-nav-scroll {
+    max-height: none !important;
+}
+.nav-bar-link-1 {
+    color: #ffffff !important;
+    width: 7.5rem;
+}
+
+.nav-bar-link-2 {
+    color: #ffffff !important;
+    width: 5rem;
+}
+
+.nav-bar-link-3 {
+    color: #ffffff !important;
+    width: 9.5rem;
+}
+
+.search {
+    border-style: none;
+    width: 35vw !important;
+    border-radius: 0 !important;
+    font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 1228px) {
+    .search {
+        width: 25vw !important;
+    }
+}
+
+@media only screen and (max-width: 1045px) {
+    .search {
+        width: 20vw !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .search {
+        width: 50vw !important;
+    }
+}
+
+.search-bar {
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+}
+
+.search-dropdown {
+    font-size: 0.8rem;
+}
+
+.search-dropdown a {
+    border-right: 1px solid rgba(11, 18, 25, 0.2);
+}
+
+.search-dropdown:focus, .search-dropdown:hover {
+    color: black;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+.navbar-toggler,
+.navbar-toggler:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart-count {
+    background: #ee4380!important;
+    text-align: center;
+    border-radius: 6.5px;
+    color: #ffffff!important;
+    display: block;
+    font-weight: bold;
+    font-size: 10px;
+    width: 17px;
+    position: absolute;
+    left: 20px;
+    text-align: center;
+    text-indent: 0px;
+    top: 2px;
+}

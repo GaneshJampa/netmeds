@@ -1,0 +1,25 @@
+.car-card {
+    box-shadow: 0 6px 12px -4px rgb(40 11 18 / 10%);
+}
+
+.car-img {
+    margin: 5% auto;
+    width: 70% !important;
+}
+
+.car-head {
+    font-weight: 400;
+    text-align: center;
+    margin-top: -25px;
+    line-height: 40px;
+    padding: 0 8px;
+}
+
+.car-txt {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+    line-height: 40px;
+    padding: 0 8px;
+    color: #5ba41c;
+}

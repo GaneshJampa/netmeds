@@ -1,0 +1,23 @@
+
+.explorer-menu {
+    background-color: #32aeb1;
+    text-align: center;
+}
+
+.explorer-link {
+   font-size: 0.8rem;
+    color: rgba(255,255,255, .8) !important;
+}
+
+.explorer-text a {
+    text-decoration: none;
+    color: rgba(255,255,255, .8) !important;
+}
+
+.dropdown-menu a {
+    color: #151b39 !important;
+}
+
+.dropdown-menu a:hover {
+    color: #32aeb1 !important;
+}

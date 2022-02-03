@@ -1,0 +1,7 @@
+
+.navigation a,
+.navigation a:hover,
+.navigation a:focus {
+    color: black;
+    font-size: 0.8rem;
+}

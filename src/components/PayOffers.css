@@ -1,0 +1,49 @@
+
+.head {
+    font-weight: bold;
+}
+
+.view-link,
+.view-link:hover,
+.view-link:active {
+    text-decoration: none;
+    float: right;
+    font-size: 14px;
+    color: #ef4281;
+}
+
+.offer-box {
+    border-radius: 10px;
+    padding: 12px 16px 0 16px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+}
+
+.offer-box-img {
+    width: 36px;
+    height: 36px;
+}
+
+.line {
+    transform: rotate(90deg);
+    width: 50px;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    position: absolute;
+}
+
+.offer-txt {
+    padding: 0;
+}
+
+.offer-box-desc {
+    color: black;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.offer-box-text {
+    color: gray;
+    font-size: 0.7rem;
+}

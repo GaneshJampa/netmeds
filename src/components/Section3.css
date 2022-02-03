@@ -1,0 +1,38 @@
+
+.acc-head button {
+    color: #24aeb1 !important;
+    font-weight: bold;
+    background-color: #f3f7fb;
+}
+
+.accordion-button:not(.collapsed),
+.accordion-button:focus {
+    background-color: #f3f7fb;
+    box-shadow: none;
+    border-color: none;
+}
+
+.accordion-button::after,
+.accordion-button:not(.collapsed)::after {
+    background-image: url(data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2324aeb1'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>);
+}
+
+.accordion-body {
+    background-color: #f3f7fb !important;
+    font-size: 14px;
+    letter-spacing: normal;
+}
+
+.accordion-body a,
+.accordion-body a:active,
+.accordion-body p {
+    text-decoration: none;
+    color: rgba(11,18,25,.75);
+}
+
+.accordion-body h1 {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: normal;
+}

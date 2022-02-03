@@ -1,0 +1,12 @@
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 1;
+}
+
+.carousel-indicators .active {
+    background-color: #24aeb1;
+}
