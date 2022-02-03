@@ -24,7 +24,7 @@ const Productpage = () => {
     useEffect(() => {
         async function fetchProductDetail() {
             const response = await axios
-                .get(`http://localhost:8080/products/${productId}`)
+                .get(`https://netmeds-backend.herokuapp.com/${productId}`)
                 .catch((error) => {
                     console.log("Error", error);
                 });
@@ -72,7 +72,7 @@ const Productpage = () => {
                     <><Row className='product-box p-3 my-4'>
                         <>
                             <Col md="12" lg className='py-2'>
-                                <Image fluid src={`http://localhost:8080/${path}`} alt='img' className='product-img' />
+                                <Image fluid src={`https://netmeds-backend.herokuapp.com/${path}`} alt='img' className='product-img' />
                             </Col>
                             <Col md="12" lg className='py-2'>
                                 <h1 className='product-title'>{name}</h1>
