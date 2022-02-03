@@ -27,7 +27,7 @@ const ProductComponent = () => {
                         <div className='py-2'>
                             <span className='off-badge'>{off}%OFF</span>
                         </div>
-                        <img className='products-img mx-auto' src={`http://localhost:8080/${path}`} alt="" />
+                        <img className='products-img mx-auto' src={`https://netmeds-backend.herokuapp.com/${path}`} alt="" />
                     </Link>
                     <Card.Body>
                         <Link to={`/product/${_id}`} style={{ textDecoration: "none", display: "grid" }}>

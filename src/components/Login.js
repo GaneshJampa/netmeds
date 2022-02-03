@@ -24,7 +24,7 @@ const Login = () => {
             axios.request({
                 method: 'Post',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'http://localhost:8080/login',
+                url: 'https://netmeds-backend.herokuapp.com/login',
                 data: JSON.stringify({ email, password })
             }).then(res => {
                 console.log(res);

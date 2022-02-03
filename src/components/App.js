@@ -30,10 +30,11 @@ import Section3 from './Section3';
 import Footer from './Footer';
 import ProductsList from './ProductsList';
 import Productpage from './Productpage';
+import Cart from './Cart';
 import Register from './Register';
 import Login from './Login';
 import NotFound from './NotFound';
-import Cart from './Cart';
+
 
 
 function App() {

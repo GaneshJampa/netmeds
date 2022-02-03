@@ -16,7 +16,7 @@ const Register = () => {
     const handleFinish = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8080/register", { email, username, password });
+            await axios.post("https://netmeds-backend.herokuapp.com/register", { email, username, password });
             navigate("/login");
             toast.success("Registration Successful!", { position: "bottom-right"});
         } catch (err) {

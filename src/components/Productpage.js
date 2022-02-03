@@ -163,7 +163,7 @@ const Productpage = () => {
 
                             <>
                                 <Col lg="1 " md="1" sm="2" xs="2" className="">
-                                    <Image src={`http://localhost:8080/${path}`} className='ms-2 my-2 l-img' />
+                                    <Image src={`https://netmeds-backend.herokuapp.com/${path}`} className='ms-2 my-2 l-img' />
                                 </Col>
                                 <Col lg="7" md="5" sm="10" xs="10" className="">
                                     <div className='my-2'>

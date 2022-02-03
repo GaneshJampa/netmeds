@@ -28,9 +28,9 @@ const ProductsList = () => {
 
     const res = () => {
         if (category === 'all') {
-            return `http://localhost:8080/products`;
+            return `https://netmeds-backend.herokuapp.com/products`;
         } else {
-            return `http://localhost:8080/categories/${catId}/products`
+            return `https://netmeds-backend.herokuapp.com/categories/${catId}/products`
         }
     }
 
@@ -40,7 +40,7 @@ const ProductsList = () => {
 
     const fetchCategories = async () => {
         const response = await axios
-            .get("http://localhost:8080/categories")
+            .get("https://netmeds-backend.herokuapp.com/categories")
             .catch((err) => {
                 console.log("Err: ", err);
             });
