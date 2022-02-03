@@ -24,7 +24,7 @@ const Productpage = () => {
     useEffect(() => {
         async function fetchProductDetail() {
             const response = await axios
-                .get(`https://netmeds-backend.herokuapp.com/${productId}`)
+                .get(`https://netmeds-backend.herokuapp.com/product/${productId}`)
                 .catch((error) => {
                     console.log("Error", error);
                 });
