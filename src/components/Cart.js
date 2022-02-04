@@ -36,7 +36,7 @@ const Cart = () => {
             <>
                 <Row className='cart-product pt-2 my-4'>
                     <Col xs="4" className="">
-                        <Image src={`http://localhost:8080/${path}`} className='my-2 cart-img' />
+                        <Image src={`https://netmeds-backend.herokuapp.com/${path}`} className='my-2 cart-img' />
                     </Col>
                     <Col xs="7" className="">
                         <div className='my-2'>
