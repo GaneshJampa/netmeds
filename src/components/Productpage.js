@@ -4,7 +4,10 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectedProduct, removeSelectedProduct } from '../redux/actions/productsActions';
 import { Container, Row, Col, ProgressBar, Button, Image } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import { addtoCart } from '../redux/actions/cartActions';
 import offers from './images/svgs/offer_blue_outline.svg';
+import rateIcon from './images/images-png-jpeg/rate-icon.png'
 import './Productpage.css';
 import _ from "lodash";
 
@@ -12,10 +15,11 @@ const Productpage = () => {
 
     const { productId } = useParams();
 
+    const products = useSelector((state) => state.allProducts.products);
 
     const product = useSelector((state) => state.product);
 
-    const { name, mrp, description, sellPrice, sellerName } = product;
+    const { _id, name, mrp, description, sellPrice, sellerName } = product;
     const cat = product.category && product.category.name;
     console.log(product);
 
@@ -62,6 +66,10 @@ const Productpage = () => {
         setLike({ liked: localLiked });
       }
 
+      const handleAdd = (id, products) => {
+        dispatch(addtoCart({id, products}));
+        toast.success("Added to Cart!", { position: "bottom-right"});
+    }
 
     return (
         <>
@@ -97,7 +105,7 @@ const Productpage = () => {
                                         <p className='mkt'>* Country of Origin: India</p>
                                         <p className='mkt'>* Delivery charges if applicable will be applied at checkout</p>
                                     </div>
-                                    <Button className='cart-add-btn'>ADD TO CART</Button>
+                                    <Button className='cart-add-btn'  onClick={(e) => handleAdd(_id, products)}>ADD TO CART</Button>
                                 </div>
                                 <h3 className='offers'>OFFERS APPLICABLE</h3>
                                 <Row>
@@ -141,7 +149,7 @@ const Productpage = () => {
                             <Col xs="12" md="12" lg="6">
                                 <div className="review-form-block">
                                     <div className="star-rating">
-                                        <img style={{ paddingRight: '10px' }} src="https://www.netmeds.com/assets/gloryweb/icons/rate-icon.png" alt='' />
+                                        <img style={{ paddingRight: '10px' }} src={rateIcon} alt='' />
                                         <span className='rate-product mx-2'>Rate Product</span>
                                         <span className='ms-2'>
                                             {_.times(5, (i) => (<i className="fas fa-star rate-product-star"></i>))}
@@ -180,7 +188,7 @@ const Productpage = () => {
                                             </div>
                                         </Col>
                                         <Col xs="5">
-                                            <Button href="#" className='cart-add-btn my-2'>ADD TO CART</Button>
+                                            <Button href="#" className='cart-add-btn my-2'  onClick={(e) => handleAdd(_id, products)}>ADD TO CART</Button>
                                         </Col>
                                     </Row>
                                 </Col>

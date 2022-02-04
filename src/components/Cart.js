@@ -1,72 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart } from '../redux/actions/cartActions';
+import { useSelector } from 'react-redux';
 import './Cart.css'
+import { Link } from 'react-router-dom';
+import CartComponent from './CartComponent';
 
 const Cart = () => {
 
     const cart = useSelector((state) => state?.cart.cart);
 
-    const products = useSelector((state) => state.allProducts.products);
-
     const [totalPrice, setTotalPrice] = useState(0);
+    const [totalDiscount, setTotalDiscount] = useState(0);
+    const [totalMrp, setTotalMrp] = useState(0);
 
-    const dispatch = useDispatch();
-
-    const handleRemove = (id, products) => {
-        dispatch(removeFromCart({ id, products }));
-        toast.success("Product removed from cart!", { position: "bottom-right"});
-    }
 
     useEffect(() => {
         let price = 0;
+        let mrp = 0;
+        let discount = 0;
         cart.forEach(product => {
-            price += product.qty * product.sellPrice
+            price += product.qty * product.sellPrice;
+            mrp += product.qty * product.mrp;
+            discount += (product.qty * product.mrp) - (product.qty * product.sellPrice);
         })
         setTotalPrice(price);
-    }, [cart, totalPrice, setTotalPrice])
+        setTotalMrp(mrp);
+        setTotalDiscount(discount);
+    }, [cart, totalPrice, setTotalPrice, totalMrp, setTotalMrp, totalDiscount, setTotalDiscount]);
 
 
-    const cartRender = cart?.map((product) => {
-        const { _id, category, name, mrp, sellPrice, productImage, sellerName, qty } = product;
-        var path = productImage.replace(/\\/g, "/");
-        return (
-            <>
-                <Row className='cart-product pt-2 my-4'>
-                    <Col xs="4" className="">
-                        <Image src={`https://netmeds-backend.herokuapp.com/${path}`} className='my-2 cart-img' />
-                    </Col>
-                    <Col xs="7" className="">
-                        <div className='my-2'>
-                            <h3 className='l-product-title'>{name}</h3>
-                            <p className='l-mkt'><span className=''>₹  {sellPrice} </span></p>
-                        </div>
-                    </Col>
-                    <Col xs="1" className="my-1">
-                        <Row>
-                            <Col xs="12">
-                                <p className=''> Qty: {qty} </p>
-                                <Button href="#" className='rmv-btn my-2' onClick={() => handleRemove(_id, products)}><i class="fas fa-trash-alt"></i></Button>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-            </>
-        )
-    })
+    
+
+    function Cart() {
+        if (cart.length !== 0) {
+          return <CartComponent />;
+        }
+        return <p className='p-3 mb-4'>YOUR CART IS EMPTY</p>;
+      }
 
     return (
         <>
-            <Container>
+            <Container className='mb-3'>
+                <h1 className='order-heading py-2'>Order Summary</h1>
                 <Row>
-                    <Col xs="9">{cartRender}</Col>
-                    <Col xs="3">
-                        <div className='checkout-box my-4 py-2 px-2'>
-                            <h1 className='cart-heading'>Cart Summary</h1>
-                            <p className='my-4'>Total: ({cart?.length}items) ₹ {totalPrice}</p>
-                            <Button href="#" className='rmv-btn my-2'>Proceed to Checkout</Button>
+                    <Col lg="9" xs="12">
+                        <div className='cart-products p-2 mb-3'>
+                            <h4 className='cart-products-h my-4 mx-3'>PRODUCTS</h4>
+                            {Cart()}
+                            <p className='pb-1'><Link className='add-more-items mx-3' to='/products/all'>ADD MORE TIMES<span className='plus-icon me-3'>+</span></Link></p>
+                        </div>
+                    </Col>
+                    <Col lg="3" xs="12">
+                        <div className='checkout-box py-2 px-2'>
+                            <h1 className='cart-products-h my-3 mx-2'>PAYMENT DETALIS</h1>
+                            <p className='my-3 mx-2'>MRP Total <span className="me-2" style={{ float: "right" }}>₹ {(totalMrp).toFixed(2)}</span> </p>
+                            <p className='my-3 mx-2'>Netmeds Discount <span className="me-2" style={{ float: "right" }}>- ₹ {(totalDiscount).toFixed(2)}</span> </p>
+                            <p className='my-3 mx-2' style={{ fontWeight: "bold" }}>Total Price * <span className="me-2" style={{ float: "right" }}>₹ {(totalPrice).toFixed(2)}</span> </p>
+                            <p className="cart-savings">TOTAL SAVINGS  <span className='ms-2'>₹.{(totalDiscount).toFixed(2)}</span></p>
+                            <Button href="#" className='proceed-btn my-2'>PROCEED</Button>
                         </div>
                     </Col>
                 </Row>
