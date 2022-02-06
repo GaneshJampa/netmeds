@@ -17,7 +17,7 @@ function Section2() {
                                 <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={8}>
                                     <h4 class="two-head">Previuos Orders</h4>
                                     <p className="two-text-1">Your previously ordered products</p>
-                                    <a href='/cart' className="two-link">
+                                    <a href='/orders' className="two-link">
                                     <span className="link-1">View Orders</span>
                                     <i class="fas fa-2x fa-chevron-circle-right link-2"></i></a></Col>
                                 <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={4} className="">

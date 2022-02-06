@@ -3,7 +3,7 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import './Cart.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartComponent from './CartComponent';
 import prevOrders from './images/svgs/previous-orders2.svg';
 
@@ -11,7 +11,9 @@ const Cart = () => {
 
     const cart = useSelector((state) => state?.cart.cart);
 
-    const user = useSelector((state) => state.auth.user)
+    const user = useSelector((state) => state.auth.user);
+
+    const navigate = useNavigate();
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalDiscount, setTotalDiscount] = useState(0);
@@ -22,7 +24,7 @@ const Cart = () => {
         let price = 0;
         let mrp = 0;
         let discount = 0;
-        cart.forEach(product => {
+        cart?.forEach(product => {
             price += product.qty * product.sellPrice;
             mrp += product.qty * product.mrp;
             discount += (product.qty * product.mrp) - (product.qty * product.sellPrice);
@@ -33,15 +35,21 @@ const Cart = () => {
     }, [cart, totalPrice, setTotalPrice, totalMrp, setTotalMrp, totalDiscount, setTotalDiscount]);
 
     function Cart() {
-        if (cart.length !== 0) {
+        if (cart?.length !== 0) {
             return <CartComponent />;
+        } else {
+          return <p className='p-3 mb-4'>YOUR CART IS EMPTY</p>;  
         }
-        return <p className='p-3 mb-4'>YOUR CART IS EMPTY</p>;
+        
     }
 
     const handleProceed = () => {
         if (user) {
-            console.log(cart, user._id)
+            if(cart.length !== 0) {
+             navigate("/checkout/order")  ; 
+            } else {
+                toast.info("Please add items to cart!", { position: "bottom-right" });
+            } 
         } else {
             toast.info("Please sign in to proceed!", { position: "bottom-right" });
         }
@@ -72,13 +80,13 @@ const Cart = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs="12" className="my-1 mx-2 p-3" style={{background: "white", borderRadius: "10px"}}>
-                        <div className="">
+                    <Col xs="12" className="my-1 p-3" style={{background: "white", borderRadius: "10px"}}>
+                        <div className="mx-2">
                             <Row>
                                 <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={8}>
                                     <h4 class="two-head">Previuos Orders</h4>
                                     <p className="two-text-1">Your previously ordered products</p>
-                                    <a href='/cart' className="two-link">
+                                    <a href='/orders' className="two-link">
                                         <span className="link-1">View Orders</span>
                                         <i class="fas fa-2x fa-chevron-circle-right link-2"></i></a></Col>
                                 <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={4} className="">

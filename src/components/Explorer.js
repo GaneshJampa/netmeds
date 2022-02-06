@@ -25,7 +25,7 @@ function Explorer() {
                                     <Col lg="2" md="3" sm="5" xs="2" >
                                         <NavDropdown title="Medicine" id="navbarScrollingDropdown" className="explorer-text mb-2">
                                             <NavDropdown.Item href="/products/all">All Medicines</NavDropdown.Item>
-                                            <NavDropdown.Item href="/cart">Previously Ordered Products</NavDropdown.Item>
+                                            <NavDropdown.Item href="/orders">Previously Ordered Products</NavDropdown.Item>
                                         </NavDropdown>
                                     </Col>
                                 </Row>

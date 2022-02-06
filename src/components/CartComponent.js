@@ -3,11 +3,11 @@ import { Row, Col, Image, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, adjustQty } from '../redux/actions/cartActions';
-import './Cart.css'
+import './Cart.css';
 import { Link } from 'react-router-dom';
 
 const CartComponent = () => {
-    const cart = useSelector((state) => state?.cart.cart);
+    const cart = useSelector((state) => state?.cart && state?.cart.cart);
 
     const products = useSelector((state) => state.allProducts.products);
 
@@ -23,7 +23,7 @@ const CartComponent = () => {
         dispatch(adjustQty({ id, products }, e.target.value));
     }
 
-    const cartRender = cart?.map((product) => {
+    const cartRender = cart && cart?.map((product) => {
         const { _id, category, name, mrp, sellPrice, productImage, sellerName, qty } = product;
         var path = productImage.replace(/\\/g, "/");
         return (
@@ -42,7 +42,6 @@ const CartComponent = () => {
                     <Col xs="2" className="my-2">
                         <Row>
                             <Col xs="12">
-                                {/* <p className=''> <label>Qty:</label> <input className=" mx-2" type="number" name="qty" min="1" max="5" value={qty}/> </p> */}
                                 <div className='my-2'>
                                     <span>Qty:</span>
                                     <select className="mx-1 qty-inc" value={qty} name="quantity" onChange={(e) => onChangehandler(e, _id, products)}>

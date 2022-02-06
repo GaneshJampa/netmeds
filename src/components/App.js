@@ -31,9 +31,12 @@ import Footer from './Footer';
 import ProductsList from './ProductsList';
 import Productpage from './Productpage';
 import Cart from './Cart';
+import CheckoutOrder from './CheckoutOrder';
 import Register from './Register';
 import Login from './Login';
 import NotFound from './NotFound';
+import Orders from './Orders';
+
 
 
 
@@ -74,6 +77,8 @@ function App() {
               <Route path="/products/:category" exact element={<ProductsList />} />
               <Route path="/product/:productId" exact element={<Productpage />} />
               <Route path="/cart" exact element={<Cart />} />
+              <Route path="/orders" exact element={<Orders />} />
+              <Route path="/checkout/order" exact element={<CheckoutOrder/>} />
               <Route path="/register" exact element={<Register />} />
               <Route path="/login" exact element={<Login />} />
               <Route path='*' exact element={<NotFound />} />

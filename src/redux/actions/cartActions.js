@@ -29,9 +29,15 @@ export const addtoCart = (productID) => {
 
   }
 
-  export const showCart = (cart) => {
+  export const clearCart = () => {
     return {
-      type: ActionTypes.SHOW_CART,
-      payload: cart,
+      type: ActionTypes.CLEAR_CART,
     };
   };
+
+  export const showOrders = (orders) => {
+    return {
+      type: ActionTypes.SHOW_ORDERS,
+      payload: orders
+    }
+  }

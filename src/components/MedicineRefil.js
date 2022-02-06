@@ -22,7 +22,7 @@ function MedicineRefil() {
                             </ul></div>
                     </Col>
                     <Col lg="4" md="4" sm="4" xs="8" className="my-1">
-                        <Button href="/cart" className='my-3 explore-button'>My orders</Button>
+                        <Button href="/orders" className='my-3 explore-button'>My orders</Button>
                     </Col>
                 </Row>
             </Container>
