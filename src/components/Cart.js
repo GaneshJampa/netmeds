@@ -5,10 +5,13 @@ import { useSelector } from 'react-redux';
 import './Cart.css'
 import { Link } from 'react-router-dom';
 import CartComponent from './CartComponent';
+import prevOrders from './images/svgs/previous-orders2.svg';
 
 const Cart = () => {
 
     const cart = useSelector((state) => state?.cart.cart);
+
+    const user = useSelector((state) => state.auth.user)
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalDiscount, setTotalDiscount] = useState(0);
@@ -29,15 +32,21 @@ const Cart = () => {
         setTotalDiscount(discount);
     }, [cart, totalPrice, setTotalPrice, totalMrp, setTotalMrp, totalDiscount, setTotalDiscount]);
 
-
-    
-
     function Cart() {
         if (cart.length !== 0) {
-          return <CartComponent />;
+            return <CartComponent />;
         }
         return <p className='p-3 mb-4'>YOUR CART IS EMPTY</p>;
-      }
+    }
+
+    const handleProceed = () => {
+        if (user) {
+            console.log(cart, user._id)
+        } else {
+            toast.info("Please sign in to proceed!", { position: "bottom-right" });
+        }
+    }
+
 
     return (
         <>
@@ -58,7 +67,27 @@ const Cart = () => {
                             <p className='my-3 mx-2'>Netmeds Discount <span className="me-2" style={{ float: "right" }}>- ₹ {(totalDiscount).toFixed(2)}</span> </p>
                             <p className='my-3 mx-2' style={{ fontWeight: "bold" }}>Total Price * <span className="me-2" style={{ float: "right" }}>₹ {(totalPrice).toFixed(2)}</span> </p>
                             <p className="cart-savings">TOTAL SAVINGS  <span className='ms-2'>₹.{(totalDiscount).toFixed(2)}</span></p>
-                            <Button href="#" className='proceed-btn my-2'>PROCEED</Button>
+                            <Button href="#" className='proceed-btn my-2' onClick={handleProceed}>PROCEED</Button>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs="12" className="my-1 mx-2 p-3" style={{background: "white", borderRadius: "10px"}}>
+                        <div className="">
+                            <Row>
+                                <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={8}>
+                                    <h4 class="two-head">Previuos Orders</h4>
+                                    <p className="two-text-1">Your previously ordered products</p>
+                                    <a href='/cart' className="two-link">
+                                        <span className="link-1">View Orders</span>
+                                        <i class="fas fa-2x fa-chevron-circle-right link-2"></i></a></Col>
+                                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={4} className="">
+                                    <img
+                                        src={prevOrders}
+                                        className="d-inline-block align-top two-img-1"
+                                        alt="rx-icon"
+                                    /></Col>
+                            </Row>
                         </div>
                     </Col>
                 </Row>

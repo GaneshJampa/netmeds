@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Nav, Navbar, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import './NavbarMain.css';
@@ -14,8 +14,6 @@ function NavbarMain() {
     const user = useSelector((state) => state.auth.user)
 
     const qty = useSelector((state) => state.cart)
-
-    console.log(qty.cart?.length)
 
     const dispatch = useDispatch();
 
@@ -40,7 +38,7 @@ function NavbarMain() {
                 onClick={(e) => handleLogout(e)}
             />Sign out</Nav.Link>
         </>
-    )
+    ) 
 
     const guestLinks = (
         <>

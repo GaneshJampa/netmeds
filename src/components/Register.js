@@ -13,17 +13,31 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const navigate = useNavigate();
 
+    function  emailValidation(email){
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if(!email || regex.test(email) === false){
+            console.log('h')
+            return true;
+        }
+        return false;
+    }
+
     const handleFinish = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post("https://netmeds-backend.herokuapp.com/register", { email, username, password });
-            navigate("/login");
-            toast.success("Registration Successful!", { position: "bottom-right"});
-        } catch (err) {
-            console.log(err.response);
-            toast.error("Please check the details", { position: "bottom-right"});
-        }
-    };
+        if (!email || !password || !username || password.length<6 || emailValidation(email)) {
+            toast.error("Please check the details", { position: "bottom-right" });
+        } else {
+            try {
+                await axios.post("https://netmeds-backend.herokuapp.com/register", { email, username, password });
+                navigate("/login");
+                toast.success("Registration Successful!", { position: "bottom-right" });
+            } catch (err) {
+                console.log(err.response);
+                toast.error(`Username/Email already exists`, { position: "bottom-right" });
+            }
+        };
+    }
+
 
     return (
         <>
@@ -52,7 +66,8 @@ const Register = () => {
                                         </div>
                                         <label className='signin-label'>EMAIL</label>
                                         <div class="input-box my-2">
-                                            <input type="email"
+                                            <input required
+                                                type="email"
                                                 class="input-form"
                                                 name="email"
                                                 onChange={(e) => setEmail(e.target.value)}

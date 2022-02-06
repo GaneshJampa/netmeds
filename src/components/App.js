@@ -41,45 +41,47 @@ function App() {
 
   return (
     <>
-    <ToastContainer autoClose={3000}/>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-      <NavbarMain/>
-      <Explorer/>
-      <Navigation />
-      <Router>
-        <Routes>
-      <Route path="/" exact element={
-        <>
-        <NetmedsCarousel />
-      <Section1 />
-      <PayOffers />
-      <Section2 />
-      <Trending />
-      <Category />
-      <Topbrands />
-      <Membership />
-      <CategoriesFocus />
-      <ExploreBeauty />
-      <BestinBeauty />
-      <PersonalCare />
-      <MensGrooming />
-      <MedicineRefil />
-      <HealthConcerns />
-      <Articles />
-      </>
-      }/>
-      <Route path="/products/:category" exact element={<ProductsList />}/>
-      <Route path="/product/:productId" exact element= {<Productpage />} />
-      <Route path="/cart" exact element={<Cart />} />
-      <Route path="/register" exact element= {<Register />} />
-      <Route path="/login" exact element= {<Login />} />
-      <Route path='*' exact element= {<NotFound />}/>
-      </Routes>
-      </Router>
-      <Section3 />
-      <Footer />
-      </PersistGate>
+      <ToastContainer autoClose={3000} />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <NavbarMain />
+            <Explorer />
+            <Navigation />
+          </Router>
+          <Router>
+            <Routes>
+              <Route path="/" exact element={
+                <>
+                  <NetmedsCarousel />
+                  <Section1 />
+                  <PayOffers />
+                  <Section2 />
+                  <Trending />
+                  <Category />
+                  <Topbrands />
+                  <Membership />
+                  <CategoriesFocus />
+                  <ExploreBeauty />
+                  <BestinBeauty />
+                  <PersonalCare />
+                  <MensGrooming />
+                  <MedicineRefil />
+                  <HealthConcerns />
+                  <Articles />
+                </>
+              } />
+              <Route path="/products/:category" exact element={<ProductsList />} />
+              <Route path="/product/:productId" exact element={<Productpage />} />
+              <Route path="/cart" exact element={<Cart />} />
+              <Route path="/register" exact element={<Register />} />
+              <Route path="/login" exact element={<Login />} />
+              <Route path='*' exact element={<NotFound />} />
+            </Routes>
+          </Router>
+          <Section3 />
+          <Footer />
+        </PersistGate>
       </Provider>
     </>
   )

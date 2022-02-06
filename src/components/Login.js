@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
-import { toast  } from 'react-toastify';
+import { toast } from 'react-toastify';
 import image from './images/images-png-jpeg/sign-in-banner-new.png';
 import './RegisterLogin.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,29 +16,39 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    function emailValidation(email) {
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (!email || regex.test(email) === false) {
+            console.log('h')
+            return true;
+        }
+        return false;
+    }
+
     const handleLogin = (e) => {
         e.preventDefault();
-        dispatch(loginStart());
-        try {
-            console.log(JSON.stringify({ email, password }))
-            axios.request({
-                method: 'Post',
-                headers: { 'Content-Type': 'application/json' },
-                url: 'https://netmeds-backend.herokuapp.com/login',
-                data: JSON.stringify({ email, password })
-            }).then(res => {
-                console.log(res);
-                toast.success("Login Successful", { position: "bottom-right"});
-                dispatch(loginSuccess(res.data));
-                navigate("/");
-            }).catch(err => {
-                toast.error("Invalid Credentials!", { position: "bottom-right"});
-                console.log(err.response)});
-        } catch (err) {
-            toast.error("Invalid Credentials!", { position: "bottom-right"});
-            dispatch(loginFailure());
-        }
-    };
+        if (!email || !password || password.length < 6 || emailValidation(email)) {
+            toast.error("Please check the details", { position: "bottom-right" });
+        } else {
+            dispatch(loginStart());
+            try {
+                axios.post("https://netmeds-backend.herokuapp.com/login", { email, password })
+                    .then(res => {
+                        console.log(res);
+                        toast.success("Login Successful", { position: "bottom-right" });
+                        dispatch(loginSuccess(res.data));
+                        navigate("/");
+                    }).catch(err => {
+                        toast.error("Invalid Credentials!", { position: "bottom-right" });
+                        console.log(err.response)
+                    });
+            } catch (err) {
+                toast.error("Invalid Credentials!", { position: "bottom-right" });
+                dispatch(loginFailure());
+            }
+        };
+    }
+
 
     return (
         <>
