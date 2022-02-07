@@ -10,18 +10,20 @@ import { showOrders } from '../redux/actions/cartActions';
 const Orders = () => {
 
     const user = useSelector((state) => state.auth.user);
-    const userId = user._id
+    const userId = user?._id
     const orders = useSelector((state) => state.orders.orders);
 
     const dispatch = useDispatch();
 
     const fetchOrders = async () => {
-        const response = await axios
-            .get(`https://netmeds-backend.herokuapp.com/user/${userId}/orders`)
-            .catch((error) => {
-                console.log("Error", error);
-            });
-        dispatch(showOrders(response.data.reverse()));
+        if (user) {
+            const response = await axios
+                .get(`https://netmeds-backend.herokuapp.com/user/${userId}/orders`)
+                .catch((error) => {
+                    console.log("Error", error);
+                });
+            dispatch(showOrders(response.data.reverse()));
+        }
     }
 
     useEffect(() => {
@@ -73,6 +75,7 @@ const Orders = () => {
             .catch((error) => {
                 console.log("Error", error);
             });
+        console.log(response)
         fetchOrders();
         toast.success("Order has been Cancelled", { position: "bottom-right" });
     }
