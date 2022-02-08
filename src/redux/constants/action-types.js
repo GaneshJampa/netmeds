@@ -15,5 +15,6 @@ export const ActionTypes = {
     ADJUST_QTY: "ADJUST_QTY",
     CLEAR_CART: "CLEAR_CART",
 
-    SHOW_ORDERS: "SHOW_ORDERS"
+    SHOW_ORDERS: "SHOW_ORDERS",
+    CLEAR_ORDERS: "CLEAR_ORDERS"
 }

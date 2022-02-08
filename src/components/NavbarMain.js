@@ -8,6 +8,7 @@ import rx from './images/svgs/rx-icon.svg';
 import cart from './images/svgs/cart.svg';
 import userimg from './images/svgs/user-icon.svg';
 import { logout } from "../redux/actions/authsActions";
+import { clearOrders } from '../redux/actions/cartActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 function NavbarMain() {
@@ -19,8 +20,13 @@ function NavbarMain() {
 
     const handleLogout = (e) => {
         e.preventDefault();
-        toast.success("Signedout Successfully!", { position: "bottom-right"});
+        toast.success("Signedout Successfully!", { position: "bottom-right" });
         dispatch(logout());
+    }
+
+    const handleOrders = (e) => {
+        e.preventDefault();
+        dispatch(clearOrders());
     }
 
     const authLinks = (
@@ -35,10 +41,10 @@ function NavbarMain() {
                 src={userimg}
                 className="d-inline-block align-top me-2 img-fluid"
                 alt="rx-icon"
-                onClick={(e) => handleLogout(e)}
+                onClick={(e) => { handleLogout(e); handleOrders(e); }}
             />Sign out</Nav.Link>
         </>
-    ) 
+    )
 
     const guestLinks = (
         <>
@@ -100,7 +106,7 @@ function NavbarMain() {
                                 alt="rx-icon"
                             />Upload</Nav.Link>
 
-                            {user? authLinks : guestLinks}
+                            {user ? authLinks : guestLinks}
 
                         </Nav>
 

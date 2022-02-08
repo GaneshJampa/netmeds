@@ -41,3 +41,9 @@ export const addtoCart = (productID) => {
       payload: orders
     }
   }
+
+  export const clearOrders = () => {
+    return {
+      type: ActionTypes.CLEAR_ORDERS,
+    };
+  };

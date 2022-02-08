@@ -56,6 +56,8 @@ export const orderReducer = ((state = orderInitialState, { type, payload }) => {
                 orders: payload
             }
 
+        case ActionTypes.CLEAR_ORDERS:
+            return { orders: [] }
         default:
             return state;
     }

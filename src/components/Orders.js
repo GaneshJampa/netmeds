@@ -5,31 +5,28 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import './Cart.css'
 import { Link } from 'react-router-dom';
-import { showOrders } from '../redux/actions/cartActions';
+import { showOrders, clearOrders } from '../redux/actions/cartActions';
 
 const Orders = () => {
 
     const user = useSelector((state) => state.auth.user);
     const userId = user?._id
-    const orders = useSelector((state) => state.orders.orders);
+    const orders = useSelector((state) => state.orders?.orders);
 
     const dispatch = useDispatch();
 
     const fetchOrders = async () => {
-        if (user) {
-            const response = await axios
-                .get(`https://netmeds-backend.herokuapp.com/user/${userId}/orders`)
-                .catch((error) => {
-                    console.log("Error", error);
-                });
-            dispatch(showOrders(response.data.reverse()));
-        }
+        const response = await axios.get(`https://netmeds-backend.herokuapp.com/user/${userId}/orders`)
+            .then((response) => {
+                dispatch(showOrders(response.data.reverse()));
+            }).catch((error) => {
+                dispatch(clearOrders());
+            })
     }
 
     useEffect(() => {
         fetchOrders();
-        console.log("hello")
-    });
+    }, []);
 
     const productsComponent = ((products) => {
         const product = products.map((product) => {
@@ -80,7 +77,7 @@ const Orders = () => {
         toast.success("Order has been Cancelled", { position: "bottom-right" });
     }
 
-    const order = orders && orders.map((order) => {
+    const order = orders && orders?.map((order) => {
         const { _id, status, total, paymentmode, address, products } = order;
         return <>
             <div className='cart-products py-2 mt-2 mb-3'>
@@ -109,16 +106,19 @@ const Orders = () => {
     })
 
     function Orders() {
-        if (orders?.length !== 0) {
-            return <>
-                <div className=''>
-                    {order}
-                </div>
-            </>
+        if (orders || !user) {
+            if (orders?.length !== 0) {
+                return <>
+                    <div className=''>
+                        {order}
+                    </div>
+                </>
+            } else {
+                return <div className='cart-products py-2 mt-2 mb-3' ><p className='p-3 mb-4'>NO ORDERS TO SHOW</p></div>;
+            }
         } else {
             return <div className='cart-products py-2 mt-2 mb-3' ><p className='p-3 mb-4'>NO ORDERS TO SHOW</p></div>;
         }
-
     }
 
     return (
