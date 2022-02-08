@@ -26,7 +26,7 @@ const Orders = () => {
 
     useEffect(() => {
         fetchOrders();
-    }, []);
+    }, [orders]);
 
     const productsComponent = ((products) => {
         const product = products.map((product) => {
@@ -106,7 +106,8 @@ const Orders = () => {
     })
 
     function Orders() {
-        if (orders || !user) {
+        console.log(Boolean(user))
+        if (orders || user) {
             if (orders?.length !== 0) {
                 return <>
                     <div className=''>
