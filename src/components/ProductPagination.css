@@ -1,0 +1,14 @@
+
+.page-link {
+    color: black;
+}
+
+.page-item.active .page-link {
+    background-color: #24aeb1;
+    border-color: #24aeb1;
+}
+
+.page-link:hover {
+    color: black;
+    box-shadow: none !important;
+}

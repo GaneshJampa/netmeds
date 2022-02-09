@@ -66,14 +66,13 @@ const ProductsList = () => {
 
     console.log("Products :", products);
 
-
     function Products() {
         const productsExists = products.allProducts.products;
         if (productsExists) {
-          return <ProductComponent />;
+            return <ProductComponent />;
         }
         return <p className='p-3 mb-4 ms-1'>NO PRODUCTS TO SHOW</p>;
-      }
+    }
 
     return (
         <>
@@ -100,7 +99,7 @@ const ProductsList = () => {
                                     <div>...Loading</div>
                                 ) : (
                                     Products()
-                                    )}
+                                )}
                             </Row>
                         </div>
                     </Col>

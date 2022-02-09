@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
 import { Col, Card, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addtoCart, removeFromCart, showCart } from '../redux/actions/cartActions';
+import { addtoCart } from '../redux/actions/cartActions';
+import ProductPagination from './ProductPagination';
 
 const ProductComponent = () => {
 
     const products = useSelector((state) => state.allProducts.products);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(9);
+
+    
+    const index0fLastProduct = currentPage * productsPerPage;
+    const index0fFirstProduct = index0fLastProduct - productsPerPage;
+    const currentProducts =  products.slice(index0fFirstProduct, index0fLastProduct);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const dispatch = useDispatch();
 
@@ -16,7 +27,7 @@ const ProductComponent = () => {
         toast.success("Added to Cart!", { position: "bottom-right"});
     }
 
-    const renderList = products && products.map((product) => {
+    const renderList = currentProducts && currentProducts.map((product) => {
         const { _id, category, name, mrp, sellPrice, productImage, sellerName } = product;
         var path = productImage.replace(/\\/g, "/");
         var off = (((mrp - sellPrice) / mrp) * 100).toFixed(2);
@@ -48,7 +59,12 @@ const ProductComponent = () => {
         );
     });
 
-    return <>{renderList}</>
+    return (
+    <>
+    {renderList}
+    <ProductPagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate}/>
+    </>
+    )
 };
 
 export default ProductComponent;
