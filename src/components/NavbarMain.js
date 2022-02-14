@@ -37,12 +37,13 @@ function NavbarMain() {
                 alt="rx-icon"
             /><span className='cart-count'>{qty.cart?.length}</span>Cart</Nav.Link>
 
-            <Nav.Link className="nav-bar-link-3" href="#"><img
-                src={userimg}
-                className="d-inline-block align-top me-2 img-fluid"
-                alt="rx-icon"
-                onClick={(e) => { handleLogout(e); handleOrders(e); }}
-            />Sign out</Nav.Link>
+            <Nav.Link className="nav-bar-link-3" href="#"
+                onClick={(e) => { handleLogout(e); handleOrders(e); }}>
+                <img
+                    src={userimg}
+                    className="d-inline-block align-top me-2 img-fluid"
+                    alt="rx-icon"
+                />Sign out</Nav.Link>
         </>
     )
 
