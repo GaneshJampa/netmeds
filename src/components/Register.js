@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { toast } from 'react-toastify';
@@ -22,7 +22,7 @@ const Register = () => {
         return false;
     }
 
-    const handleFinish = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         if (!email || !password || !username || password.length<6 || emailValidation(email)) {
             toast.error("Please check the details", { position: "bottom-right" });
@@ -54,11 +54,12 @@ const Register = () => {
                             <div className=''>
                                 <h2 className='signin-head'>Sign In / Sign Up</h2>
                                 <p className='signin-txt'>Sign up or Sign in to access your orders, special offers, health tips and more!</p>
-                                <form >
+                                <form onSubmit={handleRegister}>
                                     <div className='my-4'>
                                         <label className='signin-label'>USER NAME</label>
                                         <div class="input-box my-2">
-                                            <input type="text"
+                                            <input required
+                                                type="text"
                                                 class="input-form"
                                                 name="username"
                                                 onChange={(e) => setUsername(e.target.value)}
@@ -75,7 +76,8 @@ const Register = () => {
                                         </div>
                                         <label className='signin-label'>PASSWORD</label>
                                         <div class="input-box my-2">
-                                            <input type="password"
+                                            <input required
+                                                type="password"
                                                 class="input-form"
                                                 name="password"
                                                 minLength="6"
@@ -84,7 +86,7 @@ const Register = () => {
                                         </div>
                                     </div>
                                     <div class="form-check text-center p-0">
-                                        <Button className="signin-btn" onClick={handleFinish}>SIGN UP</Button>
+                                        <Button className="signin-btn" type='submit'>SIGN UP</Button>
                                     </div>
                                     <p className="my-4">
                                         Already have an account? <Link to="/login">Sign In</Link>

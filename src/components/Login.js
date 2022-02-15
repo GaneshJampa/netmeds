@@ -19,7 +19,6 @@ const Login = () => {
     function emailValidation(email) {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (!email || regex.test(email) === false) {
-            console.log('h')
             return true;
         }
         return false;
@@ -65,11 +64,12 @@ const Login = () => {
                             <div className=''>
                                 <h2 className='signin-head'>Sign In / Sign Up</h2>
                                 <p className='signin-txt'>Sign up or Sign in to access your orders, special offers, health tips and more!</p>
-                                <form>
+                                <form onSubmit={handleLogin}>
                                     <div className='my-4'>
                                         <label className='signin-label'>EMAIL</label>
                                         <div class="input-box my-2">
-                                            <input type="email"
+                                            <input required
+                                                type="email"
                                                 class="input-form"
                                                 name="email"
                                                 onChange={(e) => setEmail(e.target.value)}
@@ -77,7 +77,8 @@ const Login = () => {
                                         </div>
                                         <label className='signin-label'>PASSWORD</label>
                                         <div class="input-box my-2">
-                                            <input type="password"
+                                            <input required
+                                                type="password"
                                                 class="input-form"
                                                 name="password"
                                                 minLength="6"
@@ -86,7 +87,7 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div class="form-check text-center p-0">
-                                        <Button className="signin-btn" onClick={handleLogin}>SIGN IN</Button>
+                                        <Button className="signin-btn" type='submit'>SIGN IN</Button>
                                     </div>
                                     <p className="my-4">
                                         Don't have an account? <Link to="/register">Sign up</Link>

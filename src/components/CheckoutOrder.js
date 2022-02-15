@@ -61,7 +61,7 @@ const CheckoutOrder = () => {
     });
 
     const handleOrder = () => {
-        if(!mobilenumber || !housenumber || !city || !pincode || !district || !state) {
+        if (!mobilenumber || !housenumber || !city || !pincode || !district || !state) {
             toast.info("Fill the address form!", { position: "bottom-right" });
         } else {
             const order = {
@@ -96,17 +96,18 @@ const CheckoutOrder = () => {
                 <div className='cart-products p-2 mb-3'>
                     <h4 className='cart-products-h my-4 mx-3'>PRODUCTS</h4>
                     {orderrender}
-                    <h3 className='l-product-title mx-3 my-3' style={{borderBottom: "1px solid rgba(21,27,57,.1)"}}><span className='signin-head'>Total Price * : </span>  <span className="me-2" style={{ float: "right" }}>₹ {(totalPrice).toFixed(2)}</span></h3>
-                    <h3 className='l-product-title mx-3 my-2' style={{borderBottom: "1px solid rgba(21,27,57,.1)"}}><span className='signin-head'>Payment : </span>  <span className="me-2" style={{ float: "right" }}>Cash on delivery</span></h3>
+                    <h3 className='l-product-title mx-3 my-3' style={{ borderBottom: "1px solid rgba(21,27,57,.1)" }}><span className='signin-head'>Total Price * : </span>  <span className="me-2" style={{ float: "right" }}>₹ {(totalPrice).toFixed(2)}</span></h3>
+                    <h3 className='l-product-title mx-3 my-2' style={{ borderBottom: "1px solid rgba(21,27,57,.1)" }}><span className='signin-head'>Payment : </span>  <span className="me-2" style={{ float: "right" }}>Cash on delivery</span></h3>
                     <Col md="12" lg>
                         <div className='my-4 mx-3'>
                             <div className=''>
                                 <h2 className='signin-head'>Delivery Address</h2>
-                                <form >
+                                <form onSubmit={handleOrder}>
                                     <div className='mt-2 mb-4'>
-                                    <label className='signin-label'>MOBILE NUMBER (+91)</label>
+                                        <label className='signin-label'>MOBILE NUMBER (+91)</label>
                                         <div class="input-box my-2">
-                                            <input type="text"
+                                            <input required
+                                                type="text"
                                                 class="input-form"
                                                 name="mobilenumber"
                                                 onChange={(e) => setMobileNumber(e.target.value)}
@@ -114,7 +115,8 @@ const CheckoutOrder = () => {
                                         </div>
                                         <label className='signin-label'>HOUSE NUMBER </label>
                                         <div class="input-box my-2">
-                                            <input type="text"
+                                            <input required
+                                                type="text"
                                                 class="input-form"
                                                 name="housenumber"
                                                 onChange={(e) => setHouseNumber(e.target.value)}
@@ -131,7 +133,8 @@ const CheckoutOrder = () => {
                                         </div>
                                         <label className='signin-label'>PINCODE</label>
                                         <div class="input-box my-2">
-                                            <input type="text"
+                                            <input required
+                                                type="text"
                                                 class="input-form"
                                                 name="pincode"
                                                 Length="6"
@@ -140,7 +143,8 @@ const CheckoutOrder = () => {
                                         </div>
                                         <label className='signin-label'>DISTRICT</label>
                                         <div class="input-box my-2">
-                                            <input type="text"
+                                            <input required
+                                                type="text"
                                                 class="input-form"
                                                 name="district"
                                                 onChange={(e) => setDISTRICT(e.target.value)}
@@ -148,7 +152,8 @@ const CheckoutOrder = () => {
                                         </div>
                                         <label className='signin-label'>STATE</label>
                                         <div class="input-box my-2">
-                                            <input type="text"
+                                            <input required
+                                                type="text"
                                                 class="input-form"
                                                 name="state"
                                                 onChange={(e) => setSTATE(e.target.value)}
@@ -156,7 +161,7 @@ const CheckoutOrder = () => {
                                         </div>
                                     </div>
                                     <div class="form-check p-0">
-                                        <Button className="signin-btn" onClick={handleOrder}>CONFIRM ORDER</Button>
+                                        <Button className="signin-btn" type='submit'>CONFIRM ORDER</Button>
                                     </div>
                                 </form>
                             </div>
