@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 
 import { Provider } from 'react-redux';
 import store, { persistor } from '../redux/store';
@@ -36,11 +37,22 @@ import Register from './Register';
 import Login from './Login';
 import NotFound from './NotFound';
 import Orders from './Orders';
+import { useEffect } from 'react';
 
 
 
 
 function App() {
+
+  const fetchAPI = async ()=> {
+    const response = await axios.get("https://netmeds-backend.herokuapp.com/")
+    console.log(response.data);
+  }
+
+  useEffect (() => {
+    fetchAPI();
+  }, [])
+
 
   return (
     <>
